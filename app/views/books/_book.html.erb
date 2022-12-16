@@ -1,0 +1,15 @@
+ <tr>
+  <th scope="row">1</th>
+  <td> <%= book.name %></td>
+  <td> <%= book.author %></td>
+  <td><%= book.page %></td>
+  <td><%= book.year %></td>
+  <td><%= book.title %></td>
+  <td>
+    <div class="d-flex align-items-center">
+      <%= link_to "Chỉnh sửa", edit_book_path(book) ,class: 'btn btn-primary mx-2' %>
+      <%= button_to "Xóa", book, method: :delete, class: 'btn btn-warning mx-2'  %>
+    </div>
+
+  </td>
+</tr>

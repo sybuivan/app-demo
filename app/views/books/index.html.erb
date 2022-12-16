@@ -1,0 +1,49 @@
+
+
+<div class="container">
+  <% if current_user %>
+    <h1 class="text-center py-3">Quản lý sách</h1>
+    <div class="my-3 d-flex justify-content-end align-items-center">
+      <button class="btn btn-primary mx-2">
+        <%= link_to "Thêm mới sách", new_book_path, class: "link-button" %>
+      </button>
+
+      <%= form_tag(books_path, :method => "get", id: "search-form") do %>
+        <div class="d-flex justify-content-end align-items-center">
+          <%= text_field_tag :search, params[:search], placeholder: "Tìm kiếm tên sách", class: "form-control mr-sm-2" %>
+          <%= submit_tag "Tìm kiếm", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
+      <div id="books">
+       <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên sách</th>
+            <th scope="col">Tác giả</th>
+            <th scope="col">Số trang</th>
+            <th scope="col">Năm suất bản</th>
+            <th scope="col">Tiêu đề</th>
+            <th scope="col">Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |book| %>
+          <%= render book %>
+        <% end %>
+        </tbody>
+      </table>
+
+      </div>
+
+      <% else %>
+      <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3">Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+          </div>
+        </div>
+  <% end %>
+</div>
